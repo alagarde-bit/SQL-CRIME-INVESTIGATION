@@ -1,0 +1,7 @@
+SELECT facebook_event_checkin.person_id, person.name, facebook_event_checkin.event_name,substr(cast(facebook_event_checkin.date AS TEXT), 1, 6), COUNT(facebook_event_checkin.person_id)
+FROM facebook_event_checkin
+INNER JOIN person ON facebook_event_checkin.person_id = person.id
+WHERE facebook_event_checkin.event_name = 'SQL Symphony Concert' AND substr(cast(facebook_event_checkin.date AS TEXT), 1, 6) = '201712'
+GROUP BY 1
+HAVING COUNT(facebook_event_checkin.person_id) = 3
+              

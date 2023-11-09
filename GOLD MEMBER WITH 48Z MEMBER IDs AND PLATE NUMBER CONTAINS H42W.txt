@@ -1,0 +1,5 @@
+SELECT get_fit_now_member.id, get_fit_now_member.person_id, person.name, get_fit_now_member.membership_status, drivers_license.plate_number
+FROM get_fit_now_member
+LEFT JOIN person ON get_fit_now_member.person_id = person.id 
+LEFT JOIN drivers_license ON person.license_id = drivers_license.id
+WHERE substr(get_fit_now_member.id, 1,3) = '48Z' AND get_fit_now_member.membership_status = 'gold'AND drivers_license.plate_number LIKE '%H42W%'

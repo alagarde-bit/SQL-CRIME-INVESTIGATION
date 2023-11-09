@@ -1,0 +1,4 @@
+SELECT *
+FROM person
+WHERE address_street_name ='Franklin Ave' AND substr(name,1,7) = 'Annabel'       
+              

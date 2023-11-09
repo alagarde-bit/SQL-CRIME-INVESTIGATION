@@ -1,0 +1,3 @@
+SELECT *
+FROM get_Fit_now_check_in
+WHERE check_in_date = '20180109'

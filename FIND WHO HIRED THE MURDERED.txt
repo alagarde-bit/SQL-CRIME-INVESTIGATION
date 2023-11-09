@@ -1,0 +1,38 @@
+SELECT *
+FROM (
+    SELECT 
+        p.id AS person_id, 
+        p.name AS person_name, 
+        dl.id AS dl_id, 
+        dl.height, 
+        dl.hair_color, 
+        dl.gender, 
+        dl.car_make, 
+        dl.car_model
+    FROM drivers_license AS dl
+    INNER JOIN person AS p ON p.license_id = dl.id
+    WHERE 
+        dl.hair_color = 'red' AND 
+        dl.gender = 'female' AND 
+        dl.car_make = 'Tesla' AND 
+        dl.car_model = 'Model S' AND 
+        dl.height BETWEEN 65 AND 67
+) AS query1
+INNER JOIN (
+    SELECT 
+        fec.person_id, 
+        fec.event_name, 
+        SUBSTR(CAST(fec.date AS TEXT), 1, 6) AS event_date,
+        COUNT(fec.person_id) AS checkin_count
+    FROM facebook_event_checkin AS fec
+    INNER JOIN person AS p ON fec.person_id = p.id
+    WHERE 
+        fec.event_name = 'SQL Symphony Concert' AND 
+        SUBSTR(CAST(fec.date AS TEXT), 1, 6) = '201712'
+    GROUP BY 
+        fec.person_id, 
+        fec.event_name, 
+        SUBSTR(CAST(fec.date AS TEXT), 1, 6)
+    HAVING 
+        COUNT(fec.person_id) = 3
+) AS query2 ON query1.person_id = query2.person_id
