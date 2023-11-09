@@ -1,7 +1,7 @@
 # SQL-CRIME-INVESTIGATION
-SQL Crime Investigation involving a murder at SQL City on Jan.15.2018
+SQL Crime Investigation involving a murder at SQL City on Jan.15.2018 mystery.knightlab.com
 
-In master you will find my code in .txt files.
+In master you will find my code in .txt files. 
 
 Given the two parameters about the crime, I started by investigating the crime scene report table using the date, city, and the crime type 'murder'. I used the description field to read details on the two witnesses at the scene. One witnesss was named 'Annabel' on Franklin Rd and the other witness was not named with the last house on Northwestern Dr. 
 
